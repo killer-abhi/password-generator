@@ -17,11 +17,11 @@ function Card(){
         {
             setstrength("LOW");
         }
-        else if((length>8 ||length===8)&& length<14)
+        else if((length>8 ||length===8)&& length<12)
         {
             setstrength("MEDIUM");
         }
-        else if((length>14 ||length===14)&& length<20)
+        else if((length>14 ||length===12)&& length<16)
         {
             setstrength("HIGH");
         }
@@ -143,7 +143,7 @@ function Card(){
                         </div>
                     </div>
                     <div className="slider">
-                        <input type="range" id="MyRange" min={4} value={oldlength} max={20} onChange={(e) => handleslider(e)} />
+                        <input type="range" id="MyRange" min={4} value={oldlength} max={16} onChange={(e) => handleslider(e)} />
                     </div>
                 </div>
                     <div className="query">
