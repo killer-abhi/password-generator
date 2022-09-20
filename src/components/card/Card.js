@@ -31,12 +31,25 @@ function Card(){
     function generatepassword(){
         var characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$"
         var password="";
-        let uptochar=65;
+        let uptochar=26;
         let startchar=0;
 
         if(check1===1)
         {
             uptochar=52;
+        }
+        else if(check2===1)
+        {
+            uptochar=52;
+            startchar=27;
+        }
+        else if(check3===1)
+        {
+            uptochar=62;
+        }
+        else if(check4===1)
+        {
+            uptochar=65;
         }
 
         let characterslength=oldlength;
@@ -134,10 +147,14 @@ function Card(){
                     </div>
                 </div>
                     <div className="query">
-                        <input type="checkbox" id="query1"  onChange={(e)=>handleonclick1(e)}/><span id="query-type">Include Uppercase Letters</span><br/>
-                        <input type="checkbox"id="query2"onChange={(e)=>handleonclick2(e)}/><span id="query-type">Include Lowercase Letters</span><br/>
+                        
+                        <div className="query-item"><input type="checkbox" id="query1"  onChange={(e)=>handleonclick1(e)}/><span id="query-type">Include Uppercase Letters</span></div><br/>
+                        <div className="query-item"><input type="checkbox" id="query2"  onChange={(e)=>handleonclick2(e)}/><span id="query-type">Include Lowercase Letters</span></div><br/>
+                        <div className="query-item"><input type="checkbox" id="query3"  onChange={(e)=>handleonclick3(e)}/><span id="query-type">Include Numbers</span></div><br/>
+                        <div className="query-item"><input type="checkbox" id="query4"  onChange={(e)=>handleonclick4(e)}/><span id="query-type">Include Special Characters</span></div><br/>
+                        {/* <input type="checkbox"id="query2"onChange={(e)=>handleonclick2(e)}/><span id="query-type">Include Lowercase Letters</span><br/>
                         <input type="checkbox"id="query3"onChange={(e)=>handleonclick3(e)}/><span id="query-type">Include Numbers</span><br/>
-                        <input type="checkbox"id="query4"onChange={(e)=>handleonclick4(e)}/><span id="query-type">Include Special Characters</span>
+                        <input type="checkbox"id="query4"onChange={(e)=>handleonclick4(e)}/><span id="query-type">Include Special Characters</span> */}
                     </div>
                     <div className="strength">
                         <div className="heading">
@@ -155,7 +172,7 @@ function Card(){
                             </div>
                         </div>
                     </div>
-                    <button className="generate" onClick={(e)=>handlegenerate(e)}>Generate</button>
+                    <button className="generate" onClick={(e)=>handlegenerate(e)}>GENERATE</button>
                 </div>
         </div>
     )

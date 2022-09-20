@@ -1,11 +1,12 @@
 .password{
   margin-top: 3%;
-  background-color: grey;
+  background-color: hsl(247, 11%, 15%);
   color: aliceblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5em 0.8em;
+  font-family: "JetBrains Mono", monospace;
 }
 .new-password{
   background-color: transparent;
@@ -17,6 +18,7 @@
   justify-content: center; */
   background-color: transparent;
   background-image: url("/public/assets/images/copy-solid.svg");
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(100%) contrast(119%);
   background-repeat: no-repeat;
   background-position: center;
   width: 3em;
@@ -32,9 +34,10 @@
   /* margin-top: 5%; */
   display: flex;
   flex-direction: column;
+  font-family: "JetBrains Mono", monospace;
 }
 .data{
-  background-color: rgb(128, 128, 128);
+  background-color: hsl(247, 11%, 15%);
   margin-top: 5%;
   display: flex;
   flex-direction: column;
@@ -54,6 +57,7 @@
 .card-header{
   display: flex;
   background-color: transparent;
+  margin-bottom: 1em;
 }
 .heading{
   background-color: transparent;
@@ -61,6 +65,7 @@
 }
 .character-count{
   background-color: transparent;
+  color: hsl(127, 100%, 82%);
   text-align: right;
   font-size: 1.5em;
 }
@@ -84,44 +89,55 @@
   width: 80%;
   background-color: transparent;
   /* background-color:aqua; */
-  margin: 5% auto;
+  margin: 1% auto;
+}
+.query-item{
+  background-color: transparent;
 }
 .query #query-type{
   background-color: transparent;
   margin-left: 1em;
   color: aliceblue;
 }
-.generate{
-  width: 80%;
-  margin: auto;
-  height: 2em;
-  border:none;
-  background-color: aliceblue;
-  margin-bottom: 5%;
-  font-size: 1.5em;
-}
-.generate:hover{
-  cursor: pointer;
-  color: aliceblue;
-  background-color: rgb(35, 35, 35);
-}
 .strength{
   display: flex;
-  margin: 1em auto;
+  margin:auto;
+  /* padding: 1em 0em; */
   width: 80%;
   justify-content: space-between;
   align-items: center;
   font-size: 1.3em;
-  background-color: transparent;
-  color: aliceblue;
+  background-color: hsl(248, 15%, 11%);
+  color: hsl(251, 9%, 53%);
 }
 .heading{
   background-color: transparent;
+  padding: 0em 0.6em;
+  /* height: 2em; */
 }
 .strength-level{
   background-color: transparent;
   /* background-color: aliceblue; */
+  padding: 0.5em;
 }
 .strength-text{
   background-color: transparent;
+  color: hsl(127, 100%, 82%);
+}
+.generate{
+  width: 80%;
+  margin: 1em auto;
+  height: 2em;
+  border:none;
+  background-color: hsl(127, 100%, 82%);
+  margin-bottom: 5%;
+  font-size: 1.5em;
+  font-family: "JetBrains Mono", monospace;
+}
+.generate:hover{
+  cursor: pointer;
+  background-color:hsl(251, 9%, 53%) ;
+  /* color: hsl(127, 100%, 82%); */
+  color: aliceblue;
+  font-family: "JetBrains Mono", monospace;
 }
