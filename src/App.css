@@ -50,3 +50,6 @@
   width: 3em;
   height: 3em;
 }
+.copy-icon:hover{
+  cursor: pointer;
+}
