@@ -15,21 +15,19 @@ function Card() {
   function resetchecks(){
     newchecks = [0, 0, 0, 0, oldlength];
   }
-  function error(){
-    newpassword("!!! ERROR");
-  }
   const handleslider = (e) => {
     setlength(e.target.value);
-    strength();
+    strength(e.target.value);
   };
   
-  var setpassword="";
   function generatepassword() {
+
     var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var lower = "abcdefghijklmnopqrstuvwxyz";
     var numbers = "0123456789";
     var special = "@#$";
 
+    let setpassword="";
     let uptochar = 0;
     var characters ="";
     var password = "";
@@ -43,7 +41,7 @@ function Card() {
     // console.log(count);
     // console.log(oldlength);
     if(count===4){
-      error();
+      newpassword("! Select Any Checkbox");
     }
 
     if (oldchecks[0] === 1) {
@@ -93,7 +91,7 @@ function Card() {
     window.alert("Password Copied To Clipboard");
   };
 
-  function strength() {
+  function strength(x) {
     let count = 0;
 
     for(let p=0;p<4;p++){
@@ -102,24 +100,37 @@ function Card() {
       }
     }
     console.log(count);
+    console.log(x);
     
-    console.log(oldlength);
-    if (count===2 && oldlength>4) 
+    if(x<=8){
+      setstrength("LOW");
+    }
+    else if(x>8 && x<12){
+      setstrength("MEDIUM");
+    }
+    else{
+      setstrength("HIGH");
+    }
+    
+    if (count===1 && x>=8) 
+    {
+      setstrength("MEDIUM");
+    }
+    else if (count===1 && x>11) 
+    { 
+      setstrength("HIGH");
+    }
+    else if (count===2 && x>6) 
     {
       setstrength("MEDIUM");
     }  
-    else if (count>2 && oldlength>5) 
+    else if (count===2 && x>10) 
     {
       setstrength("HIGH");
-    }
-    else if(oldlength>8){
-      setstrength("MEDIUM");
-    }
-    else if(oldlength>12){
+    }  
+    else if (count>2 && x>5) 
+    {
       setstrength("HIGH");
-    }
-    else{
-      setstrength("LOW");
     }
   }
   function handleonclick(id) {
@@ -135,7 +146,7 @@ function Card() {
     newchecks(oldchecks);
     for (let i = 0; i < 5; i++) {
     }
-    strength();
+    strength(oldlength);
   }
 
   return (
