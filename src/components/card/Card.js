@@ -8,13 +8,10 @@ function Card() {
   let [oldstrength, setstrength] = useState("LOW");
   const [oldpassword, newpassword] = useState("Password");
 
-
   let defaultchecks = [0, 0, 0, 0, oldlength];
   let [oldchecks,newchecks]=useState(defaultchecks);
 
-  function resetchecks(){
-    newchecks = [0, 0, 0, 0, oldlength];
-  }
+  let isFirstRun;
   const handleslider = (e) => {
     setlength(e.target.value);
     strength(e.target.value);
@@ -38,50 +35,50 @@ function Card() {
         count++;
       }
     }
-    // console.log(count);
-    // console.log(oldlength);
-    if(count===4){
+    if(count===(4-isFirstRun)){
+      console.log(count);
+      console.log(isFirstRun);
       newpassword("! Select Any Checkbox");
     }
+    else{
+      if(isFirstRun===1){
+        characters+=lower;
+        uptochar+= 26;
+        isFirstRun=0;
+      }
+      if (oldchecks[0] === 1) {
+        uptochar +=26;
+        characters+=upper;
+      } 
+      if (oldchecks[1] === 1) {
+        characters+=lower;
+        uptochar+= 26;
+      } 
+      if (oldchecks[2] === 1) {
+        characters+=numbers;
+        uptochar +=10 ;
+      } 
+      if (oldchecks[3] === 1) {
+        characters+=special;
+        uptochar +=3;
+      }
 
-    if (oldchecks[0] === 1) {
-      uptochar +=26;
-      characters+=upper;
-      // console.log(characters);
-    } 
-    
-    if (oldchecks[1] === 1) {
-      // console.log(characters);
-      characters+=lower;
-      uptochar+= 26;
-    } 
-    if (oldchecks[2] === 1) {
-      characters+=numbers;
-      uptochar +=10 ;
-      // console.log(characters);
-    } 
-    if (oldchecks[3] === 1) {
-      characters+=special;
-      uptochar +=3;
-      // console.log(characters);
-    }
-
-    for (let i = 0; i < oldlength; i++) {
-        let index = Math.floor(Math.random() * uptochar);
-        password += characters.charAt(index);
-    }
-    // console.log(password);
-    setpassword += password;
-    newpassword(password);
+      for (let i = 0; i < oldlength; i++) {
+          let index = Math.floor(Math.random() * uptochar);
+          password += characters.charAt(index);
+      }
+      // console.log(password);
+      setpassword += password;
+      newpassword(password);
+    }  
   }
   useEffect(()=>{
-    oldchecks[1]=1;
-    newchecks(oldchecks);
-    // console.log(document.getElementById("query1").defaultChecked);
+    isFirstRun=1;
     generatepassword();
   },[]);
   
   const handlegenerate = (e) => {
+    isFirstRun=0;
     console.log("Handle Generate Invoked");
     generatepassword();
   };
@@ -128,7 +125,7 @@ function Card() {
     {
       setstrength("HIGH");
     }  
-    else if (count>2 && x>5) 
+    else if (count>2 && x>6) 
     {
       setstrength("HIGH");
     }
@@ -138,14 +135,11 @@ function Card() {
     // console.log(id);
     if (oldchecks[id] === 1) {
       oldchecks[id] = 0;
-      // console.log(oldchecks[id]);
-    } else {
+    } 
+    else {
       oldchecks[id] = 1;
-      // console.log(oldchecks[id]);
     }
     newchecks(oldchecks);
-    for (let i = 0; i < 5; i++) {
-    }
     strength(oldlength);
   }
 
@@ -213,20 +207,11 @@ function Card() {
             <span id="query-type">Include Special Characters</span>
           </div>
           <br />
-          {/* <input type="checkbox"id="query2"onChange={(e)=>handleonclick2(e)}/><span id="querytype">Include Lowercase Letters</span><br/>
-                        <input type="checkbox"id="query3"onChange={(e)=>handleonclick3(e)}/><span id="query-type">Include Numbers</span><br/>
-                        <input type="checkbox"id="query4"onChange={(e)=>handleonclick4(e)}/><span id="query-type">Include Special Characters</span> */}
         </div>
         <div className="strength">
           <div className="heading">STRENGTH</div>
           <div className="strength-level">
             <div className="strength-text">{oldstrength}</div>
-            {/* <div className="strength-bars">
-              <div className="level1"></div>
-              <div className="level2"></div>
-              <div className="level3"></div>
-              <div className="level4"></div>
-            </div> */}
           </div>
         </div>
         <button className="generate" onClick={(e) => handlegenerate(e)}>

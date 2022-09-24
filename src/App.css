@@ -8,23 +8,18 @@
   /* background-color: antiquewhite; */
 }
 .main{
-  /* width: 100vw; */
-  /* height: 100vh; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.body{
-  margin-top: 4em; 
+  margin:2.5em auto;
   width: 30em;
-  height: 100%;
 }
-@media screen and (min-width:100px) and (max-width:600px){
-  .body{
-    margin-top: 2em;
+@media (min-width:300px) and (max-width:1000px) {
+  .main{
+    margin:2em auto;
     width: 20em;
-    height: 100%;
-  }  
+    font-size: 1em;
+  }
+  .card{
+    font-size: 1em;
+  }
 }
 .header{
   text-align: center;
